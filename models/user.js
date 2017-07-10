@@ -1,7 +1,7 @@
 const orm = require('orm');
 const URL = require('../db/config');
 
-var db = orm.connect(connectionString, function onConnect(err) {
+var db = orm.connect(URL, function onConnect(err) {
     if (err) {
         console.error('Error', err);
         process.exit(1);
@@ -10,7 +10,5 @@ var db = orm.connect(connectionString, function onConnect(err) {
 db.settings.set('instance.cache', false);
 
 module.exports = User = db.define('user', {
-    name: {
-        type: 'string'
-    }
+    name: String
 });

@@ -15,8 +15,9 @@
         "socket.io": "^2.0.3"
     },
     "scripts": {
-        "api-gateway": "node gateway/server",
+        "api": "node api-gateway/server",
         "init-db": "node db/init",
-        "start": "yarn run api-gateway"
+        "start": "yarn run api",
+        "user": "node services/user-service"
     }
 }
