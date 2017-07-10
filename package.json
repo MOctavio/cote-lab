@@ -1,0 +1,22 @@
+{
+    "name": "cote-lab",
+    "version": "1.0.0",
+    "description": "Microservices architecture built with cote.js",
+    "main": "index.js",
+    "repository": "https://github.com/MOctavio/cote-lab.git",
+    "author": "Mario Octavio Jimenez <jimenez303@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "body-parser": "^1.17.2",
+        "cote": "^0.15.1",
+        "express": "^4.15.3",
+        "mongodb": "^2.2.30",
+        "orm": "^3.2.3",
+        "socket.io": "^2.0.3"
+    },
+    "scripts": {
+        "api-gateway": "node gateway/server",
+        "init-db": "node db/init",
+        "start": "yarn run api-gateway"
+    }
+}
