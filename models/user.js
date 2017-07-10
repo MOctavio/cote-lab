@@ -1,5 +1,5 @@
 const orm = require('orm');
-const URL = require('./config');
+const URL = require('../db/config');
 
 var db = orm.connect(connectionString, function onConnect(err) {
     if (err) {
