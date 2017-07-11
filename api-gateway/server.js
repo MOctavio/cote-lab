@@ -10,21 +10,6 @@ app.all('*', (req, res, next) => {
     console.info(req.method, req.url);
     next();
 });
-app.get('/print', (req, res) => {
-    // productRequester.send({type: 'list'}, (err, products) => {
-    //     res.send(products);
-    // });
-});
-app.post('/print', (req, res) => {
-    // productRequester.send({type: 'create', product: req.body.product}, (err, product) => {
-    //     res.send(product);
-    // });
-});
-app.delete('/print/:id', (req, res) => {
-    // productRequester.send({type: 'delete', id: req.params.id}, (err, product) => {
-    //     res.send(product);
-    // });
-});
 app.get('/shiping', (req, res) => {
     // productRequester.send({type: 'list'}, (err, products) => {
     //     res.send(products);
@@ -39,6 +24,23 @@ app.delete('/shiping/:id', (req, res) => {
     // productRequester.send({type: 'delete', id: req.params.id}, (err, product) => {
     //     res.send(product);
     // });
+});
+
+// Print API's
+app.get('/print', (req, res) => {
+    printRequester.send({type: 'list'}, (err, prints) => {
+        res.send(prints);
+    });
+});
+app.patch('/print', (req, res) => {
+    printRequester.send({type: 'create', order: req.body}, (err, print) => {
+        res.send(print);
+    });
+});
+app.delete('/print', (req, res) => {
+    printRequester.send({type: 'delete', id: req.body.id}, (err, print) => {
+        res.send(print);
+    });
 });
 
 // User API's
@@ -58,16 +60,17 @@ app.delete('/user', (req, res) => {
     });
 });
 
-// const productRequester = new cote.Requester({
-//     name: 'admin product requester',
-//     namespace: 'product'
-// });
-//
+// Requesters
 const userRequester = new cote.Requester({
     name: 'USER [Requester]',
     namespace: 'user'
 });
+const printRequester = new cote.Requester({
+    name: 'PRINT [Requester]',
+    namespace: 'print'
+});
 
+// Web Sockets
 new cote.Sockend(io, {
     name: 'Sockend [WebSocket]'
 });
