@@ -1,7 +1,6 @@
 const orm = require('orm');
 const URL = require('../db/config');
 
-
 const db = orm.connect(URL, function onConnect(err) {
     if (err) {
         console.error('Error', err);

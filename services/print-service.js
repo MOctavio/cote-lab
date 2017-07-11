@@ -27,10 +27,6 @@ printResponder.on('get', (req, cb) => {
 });
 printResponder.on('delete', (req, cb) => {
     Print.get(req.id, (err, print) => {
-        if (err) {
-            console.error('Error', err);
-            process.exit(1);
-        }
         print.remove((err, print) => {
             cb(err, print);
             updatePrint();
