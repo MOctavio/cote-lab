@@ -7,7 +7,7 @@ const app = require('express')(),
 app.use(bodyParser.json());
 
 app.all('*', (req, res, next) => {
-    console.log(req.method, req.url);
+    console.info(req.method, req.url);
     next();
 });
 app.get('/print', (req, res) => {
@@ -40,26 +40,39 @@ app.delete('/shiping/:id', (req, res) => {
     //     res.send(product);
     // });
 });
+
+// User API's
 app.get('/user', (req, res) => {
     userRequester.send({type: 'list'}, (err, users) => {
         res.send(users);
     });
 });
+app.patch('/user', (req, res) => {
+    userRequester.send({type: 'create', user: req.body.user}, (err, user) => {
+        res.send(user);
+    });
+});
+app.delete('/user', (req, res) => {
+    userRequester.send({type: 'delete', id: req.body.id}, (err, user) => {
+        res.send(user);
+    });
+});
+
 // const productRequester = new cote.Requester({
 //     name: 'admin product requester',
 //     namespace: 'product'
 // });
 //
 const userRequester = new cote.Requester({
-    name: 'user requester',
+    name: 'USER [Requester]',
     namespace: 'user'
 });
 
 new cote.Sockend(io, {
-    name: 'sockend server'
+    name: 'Sockend [WebSocket]'
 });
 
 // Server log & conf
 const PORT = 3001;
 server.listen(PORT);
-console.info(`Server listening on port: ${PORT}`);
+console.info(`Server listening on port: ${PORT}\n`);
