@@ -10,21 +10,6 @@ app.all('*', (req, res, next) => {
     console.info(req.method, req.url);
     next();
 });
-app.get('/shiping', (req, res) => {
-    // productRequester.send({type: 'list'}, (err, products) => {
-    //     res.send(products);
-    // });
-});
-app.post('/shiping', (req, res) => {
-    // productRequester.send({type: 'create', product: req.body.product}, (err, product) => {
-    //     res.send(product);
-    // });
-});
-app.delete('/shiping/:id', (req, res) => {
-    // productRequester.send({type: 'delete', id: req.params.id}, (err, product) => {
-    //     res.send(product);
-    // });
-});
 
 // Print API's
 app.get('/print', (req, res) => {
@@ -40,6 +25,23 @@ app.patch('/print', (req, res) => {
 app.delete('/print', (req, res) => {
     printRequester.send({type: 'delete', id: req.body.id}, (err, print) => {
         res.send(print);
+    });
+});
+
+// Shipping API's
+app.get('/shipping', (req, res) => {
+    shippingRequester.send({type: 'list'}, (err, shippings) => {
+        res.send(shippings);
+    });
+});
+app.patch('/shipping', (req, res) => {
+    shippingRequester.send({type: 'create', order: req.body}, (err, shipping) => {
+        res.send(shipping);
+    });
+});
+app.delete('/shipping', (req, res) => {
+    shippingRequester.send({type: 'delete', id: req.body.id}, (err, shipping) => {
+        res.send(shipping);
     });
 });
 
@@ -68,6 +70,10 @@ const userRequester = new cote.Requester({
 const printRequester = new cote.Requester({
     name: 'PRINT [Requester]',
     namespace: 'print'
+});
+const shippingRequester = new cote.Requester({
+    name: 'SHIPPING [Requester]',
+    namespace: 'shipping'
 });
 
 // Web Sockets
