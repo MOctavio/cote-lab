@@ -1,0 +1,29 @@
+{
+    "apps": [
+        {
+            "name"      : "api",
+            "script"    : "api-gateway/server.js",
+            "watch"     : "api-gateway/server.js"
+        },
+        {
+            "name"      : "print-service",
+            "script"    : "services/print-service.js",
+            "watch"     : "services/print-service.js"
+        },
+        {
+            "name"      : "shipping-service",
+            "script"    : "services/shipping-service.js",
+            "watch"     : "services/shipping-service.js"
+        },
+        {
+            "name"      : "user-service",
+            "script"    : "services/user-service.js",
+            "watch"     : "services/user-service.js"
+        },
+        {
+            "name"      : "monitor",
+            "script"    : "config/monitor.js",
+            "watch"     : "config/monitor.js"
+        }
+    ]
+}

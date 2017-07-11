@@ -2,7 +2,7 @@
     "name": "cote-lab",
     "version": "1.0.0",
     "description": "Microservices architecture built with cote.js",
-    "main": "index.js",
+    "main": "main.json",
     "repository": "https://github.com/MOctavio/cote-lab.git",
     "author": "Mario Octavio Jimenez <jimenez303@gmail.com>",
     "license": "MIT",
@@ -17,9 +17,11 @@
     "scripts": {
         "api": "node api-gateway/server",
         "init-db": "node db/init",
-        "start": "yarn run api",
+        "start": "pm2 start pm2.json",
+        "stop": "pm2 stop all",
         "print": "node services/print-service",
         "shipping": "node services/shipping-service",
-        "user": "node services/user-service"
+        "user": "node services/user-service",
+        "monitor": "node config/monitor.js"
     }
 }
