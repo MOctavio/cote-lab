@@ -18,7 +18,8 @@
         "api": "node api-gateway/server",
         "init-db": "node db/init",
         "start": "yarn run api",
-        "user": "node services/user-service",
-        "print": "node services/print-service"
+        "print": "node services/print-service",
+        "shipping": "node services/shipping-service",
+        "user": "node services/user-service"
     }
 }
