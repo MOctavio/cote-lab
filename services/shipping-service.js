@@ -1,5 +1,6 @@
 const cote = require('cote');
 const Shipping = require('../models/shipping');
+const { Subscriber } = require('./subscriber');
 
 const shippingResponder = new cote.Responder({
     name: 'SHIPPING [Responder]',
@@ -11,13 +12,11 @@ const shippingPublisher = new cote.Publisher({
     namespace: 'shipping',
     broadcasts: ['update']
 });
-const registerPublisher = new cote.Publisher({
-    name: 'Register [Publisher]',
-    key: 'register',
-    broadcasts: ['register']
-});
-registerPublisher.publish('register', 'shipping');
 
+// Publish itself to be registered
+Subscriber.publish('register', 'shipping');
+
+// Responder
 shippingResponder.on('*', console.info);
 
 shippingResponder.on('create', (req, cb) => {
