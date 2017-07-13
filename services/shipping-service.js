@@ -11,6 +11,12 @@ const shippingPublisher = new cote.Publisher({
     namespace: 'shipping',
     broadcasts: ['update']
 });
+const registerPublisher = new cote.Publisher({
+    name: 'Register [Publisher]',
+    key: 'register',
+    broadcasts: ['register']
+});
+registerPublisher.publish('register', 'shipping');
 
 shippingResponder.on('*', console.info);
 

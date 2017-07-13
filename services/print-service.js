@@ -11,6 +11,12 @@ const printPublisher = new cote.Publisher({
     namespace: 'print',
     broadcasts: ['update']
 });
+const registerPublisher = new cote.Publisher({
+    name: 'Register [Publisher]',
+    key: 'register',
+    broadcasts: ['register']
+});
+registerPublisher.publish('register', 'print');
 
 printResponder.on('*', console.info);
 

@@ -9,8 +9,14 @@ const userResponder = new cote.Responder({
 const userPublisher = new cote.Publisher({
     name: 'USER [Publisher]',
     namespace: 'user',
-    broadcasts: ['update']
+    broadcasts: ['update', 'register']
 });
+const registerPublisher = new cote.Publisher({
+    name: 'Register [Publisher]',
+    key: 'register',
+    broadcasts: ['register']
+});
+registerPublisher.publish('register', 'user');
 
 userResponder.on('*', console.info);
 
