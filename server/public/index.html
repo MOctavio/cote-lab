@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Client</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+</head>
+
+<body class="container">
+    <h1>Users</h1>
+    <table class="table table-striped">
+        <thead class="text-muted">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody class="js-users"></tbody>
+    </table>
+
+    <h1>Shipping</h1>
+    <h2 class="text-muted">Add new shipping request</h2>
+    <!-- <form ng-submit="createShipping()"> -->
+        <table class="table table-striped">
+            <thead class="text-muted">
+                <tr>
+                    <th>Order</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input id="shipping.order" type="text" /></td>
+                    <td><input id="shipping.quantity" type="text" /></td>
+                    <td>
+                        <button class="btn btn-sm btn-then js-add-shipping">Add</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    <!-- </form> -->
+    <h2 class="text-muted">List all shipping requests</h2>
+    <table class="table table-striped">
+        <thead class="text-muted">
+            <tr>
+                <th>#</th>
+                <th>Order</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody class="js-shipping"></tbody>
+    </table>
+
+    <h1>Print</h1>
+    <h2 class="text-muted">Add new print order</h2>
+    <form ng-submit="createPrint()">
+        <table class="table table-striped">
+            <thead class="text-muted">
+                <tr>
+                    <th>Order</th>
+                    <th>Quantity</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input id="shipping.order" type="text" /></td>
+                    <td><input id="shipping.quantity" type="text" /></td>
+                    <td>
+                        <button type="submit" class="btn btn-sm btn-then js-add-print">Add</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <h2 class="text-muted">List all print orders</h2>
+    <table class="table table-striped">
+        <thead class="text-muted">
+            <tr>
+                <th>#</th>
+                <th>Order</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody class="js-print"></tbody>
+    </table>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
+</body>
+
+</html>

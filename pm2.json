@@ -1,9 +1,9 @@
 {
     "apps": [
         {
-            "name"      : "api",
-            "script"    : "api-gateway/server.js",
-            "watch"     : "api-gateway/server.js"
+            "name"      : "server",
+            "script"    : "server/server.js",
+            "watch"     : "server/server.js"
         },
         {
             "name"      : "print-service",

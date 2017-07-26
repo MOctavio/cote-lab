@@ -1,14 +1,21 @@
-const app = require('express')(),
+const express = require('express'),
+    app = express(),
     bodyParser = require('body-parser'),
     server = require('http').Server(app),
     io = require('socket.io')(server),
-    cote = require('cote');
+    cote = require('cote'),
+    path = require('path');
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
 app.all('*', (req, res, next) => {
     console.info(req.method, req.url);
     next();
+});
+
+app.get('/', (req, res) => {
+    res.sendFile('/index.html');
 });
 
 // Services API
@@ -58,6 +65,7 @@ app.patch('/shipping', (req, res) => {
     });
 });
 app.delete('/shipping', (req, res) => {
+    console.log(req.body);
     shippingRequester.send({
         type: 'delete',
         id: req.body.id

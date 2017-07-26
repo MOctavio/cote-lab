@@ -15,7 +15,7 @@
         "socket.io": "^2.0.3"
     },
     "scripts": {
-        "api": "node api-gateway/server",
+        "server": "node server/server",
         "init-db": "node db/init",
         "start": "pm2 start pm2.json",
         "stop": "pm2 stop all",
